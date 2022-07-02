@@ -2,11 +2,9 @@
 
 📚 Learning and exploring Sourcegraph.
 
-> **Universal Code Search**
-> 
-> Move fast, even in big codebases.
+> Fix vulnerabilities and issues across your entire codebase
 >
-> <cite>--https://about.sourcegraph.com/</cite>
+> --<cite>https://about.sourcegraph.com</cite>
 
 ## Instructions
 
