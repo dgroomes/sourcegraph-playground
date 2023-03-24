@@ -1,10 +1,17 @@
 # sourcegraph-playground
 
-NOTE: 2022-07-16 I'm leaving this in a messy state. When I first started using SourceGraph, I was able to do it without
+UPDATE 2023-03-23: Things have changed again, and in a great way. Sourcegraph has a desktop app that runs a local
+version of Sourcegraph from a single binary. No containers needed! See the announcement: [*Announcing the Sourcegraph app*](https://about.sourcegraph.com/blog/announcing-sourcegraph-app).
+I just installed and it's promising although I'm having issues with indexing my repos. And I'm even more enthusiastic
+about [their other blog post](https://about.sourcegraph.com/blog/cheating-is-all-you-need).
+
+UPDATE 2022-07-16: I'm leaving this in a messy state. When I first started using SourceGraph, I was able to do it without
 Docker containers. But I revisited it again and now I'm having trouble I'll just leave my many notes below. I hope that
 SourceGraph can once again run on macOS without Docker (or if Docker somehow solves all its file system etc. performance
-problems). I like the product. Fortunately becuase all my repos are public on GitHub, Sourcegraph should be able to continue
-indexing them.
+problems). I like the product. Fortunately because all my repos are public on GitHub, Sourcegraph should be able to continue
+indexing them. (UPDATE some time later: Sourcegraph stopped supporting sync for personal repos and only a smattering of
+my repos remained indexed, so I eventually stopped using it and did normal `grep/rg` and then briefly used GitHub's new
+code search).
 
 📚 Learning and exploring Sourcegraph.
 
