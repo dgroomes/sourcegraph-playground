@@ -87,6 +87,29 @@ issues in detail, and make it clear how to re-produce them. Even if I'm the only
 team is very generous in [the Sourcegraph Discord](https://discord.com/invite/DZtdAxTfrM).
 
 
+## Instructions: Running Sourcegraph App (Desktop app)
+
+These are my instructions for running *Sourcegraph App* (the desktop app) on my personal computer. I'm running macOS
+Ventura (13.2.1) on an Apple Silicon Macbook.
+
+1. Install Sourcegraph App
+   * I installed via the `.dmg` installer
+2. Start it
+   * It's neat that the Sourcegraph App is packaged as a proper desktop app. In the macOS Finder, you literally see the
+     file `Sourcegraph App` and it has file kind equal to `Application`. It shows up in Finder in the `Applications`
+     section which means it's installed in the directory `/Applications/`. It's ~800MB.
+   * Open Spotlight (⌘ + Space), type `Sourcegraph App` and hit enter. It opens a little window showing `Stop`, `Start`,
+     and `Show log` buttons. You access the web UI from your browser at `http://127.0.0.1:3080/`. It makes sense that it
+     doesn't have to be an Electron app. I guess why bother, right?
+
+My next step is to figure out indexing. Right now, indexing (is it precise code indexing??) isn't totally working. When
+I navigate to the `http://127.0.0.1:3080/site-admin/repositories` page I see all the repos I expect to see and they all
+have the `CLONED` status. When I click into the settings for any of them, and go to the `Indexing` page, I see "initial
+indexing in progress". I think this is because I'm not running the optional `zoekt-indexserver` service which needs to
+run in a Docker container and also the `src` CLI tool needs to exist. See the [(Optional) batch changes & precise code intel](https://docs.sourcegraph.com/app#optional-batch-changes-precise-code-intel)
+section of the docs.
+
+
 ## Reference
 
 * [Sourcegraph + AI: A Steve Yegge blog post (including rant)](https://about.sourcegraph.com/blog/cheating-is-all-you-need).
@@ -97,3 +120,4 @@ team is very generous in [the Sourcegraph Discord](https://discord.com/invite/DZ
       up, I could have written this program by asking my computer to do it.
   * > Cody is Sourcegraph’s new LLM-backed coding assistant.
 * [Sourcegraph Discord](https://discord.com/invite/DZtdAxTfrM)
+* [Sourcegraph App docs](https://docs.sourcegraph.com/app)
