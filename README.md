@@ -110,6 +110,25 @@ run in a Docker container and also the `src` CLI tool needs to exist. See the [(
 section of the docs.
 
 
+## Wish List
+
+General clean-ups, TODOs and things I wish to implement for this project
+
+* [ ] Install the current versio of `src`, the Sourcegraph CLI tool. I already have an old installation. Get it up-to-date
+      and make sure it works. This is one of the optional things needed for indexing.
+* [ ] Likewise, run Docker at the same time as the Sourcegraph App. See if it indexing works.
+* [ ] List out more todos. I want to try the intellij plugin, browser extension, etc. I want to use Sourcegraph as the
+  Code Intelligence Platform it's touted as. One thing I've especially been dragging my feet on is implementing automation
+  for markdown list format linting that plagues me everyday. I have the [lint rule](https://github.com/dgroomes/markdownlint-playground/blob/main/lint-rules/README.md#lint-rules-1)
+  but never integrated it anywhere. Perfect for batch changes? Or better as a project tool, like when using Cody? I kind
+  of really do not vibe with widespread automated pull requests (despite everyone else and their parents loving it). I
+  still have to validate the change repo-by-repo, because I actually review/QA my software changes (and writing work changes)
+  So I don't grok it, but I'm willing to see the other side of it.   
+* [ ] Sync my personal repos. Should I sync from local or from GitHub integration?
+* [ ] Consider building Sourcegraph "app" from source. Is it all in the OSS repo? I don't necessarily want to maintain
+  a fork but I might want to patch some things (and maybe disable some things).  
+
+
 ## Reference
 
 * [Sourcegraph + AI: A Steve Yegge blog post (including rant)](https://about.sourcegraph.com/blog/cheating-is-all-you-need).
