@@ -94,7 +94,11 @@ Ventura (13.2.1) on an Apple Silicon Macbook.
 
 1. Install Sourcegraph App
    * I installed via the `.dmg` installer
-2. Start it
+2. Install the `src` CLI tool
+   * I installed using HomeBrew. See other installation options at <https://github.com/sourcegraph/src-cli>.
+   * Do I need to set the env vars, like `SRC_ENDPOINT`? Or shouldn't `Source Graph.app` know how to accomplish the same
+     effect?  
+3. Start it
    * It's neat that the Sourcegraph App is packaged as a proper desktop app. In the macOS Finder, you literally see the
      file `Sourcegraph App` and it has file kind equal to `Application`. It shows up in Finder in the `Applications`
      section which means it's installed in the directory `/Applications/`. It's ~800MB.
@@ -114,7 +118,7 @@ section of the docs.
 
 General clean-ups, TODOs and things I wish to implement for this project
 
-* [ ] Install the current versio of `src`, the Sourcegraph CLI tool. I already have an old installation. Get it up-to-date
+* [x] DONE Install the current version of `src`, the Sourcegraph CLI tool. I already have an old installation. Get it up-to-date
       and make sure it works. This is one of the optional things needed for indexing.
 * [ ] Likewise, run Docker at the same time as the Sourcegraph App. See if it indexing works.
 * [ ] List out more todos. I want to try the intellij plugin, browser extension, etc. I want to use Sourcegraph as the
@@ -126,7 +130,7 @@ General clean-ups, TODOs and things I wish to implement for this project
   So I don't grok it, but I'm willing to see the other side of it.   
 * [ ] Sync my personal repos. Should I sync from local or from GitHub integration?
 * [ ] Consider building Sourcegraph "app" from source. Is it all in the OSS repo? I don't necessarily want to maintain
-  a fork but I might want to patch some things (and maybe disable some things).  
+  a fork but I might want to patch some things (and maybe disable some things).
 
 
 ## Reference
