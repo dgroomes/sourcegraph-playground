@@ -120,7 +120,14 @@ General clean-ups, TODOs and things I wish to implement for this project
 
 * [x] DONE Install the current version of `src`, the Sourcegraph CLI tool. I already have an old installation. Get it up-to-date
       and make sure it works. This is one of the optional things needed for indexing.
-* [ ] Likewise, run Docker at the same time as the Sourcegraph App. See if it indexing works.
+* [ ] IN PROGRESS Likewise, run Docker at the same time as the Sourcegraph App. See if indexing works.
+  * I'm running into an issue. For some reason I'm getting 
+  * > exec: \"docker\": executable file not found in $PATH"}}
+  * Even though `docker` is at `/usr/local/bin/docker` and this dir is in `/etc/paths` so I would think the Sourcegraph
+    process should have that on its path? It is a symlink though so maybe that's it. I'm going to reproduce this from a
+    singe-file Go program.
+  * UPDATE: This is the problem: https://apple.stackexchange.com/a/243946 . The PATH for apps launched from Finder/Spotlight
+    don't have `/usr/local/bin` on the PATH.
 * [ ] List out more todos. I want to try the intellij plugin, browser extension, etc. I want to use Sourcegraph as the
   Code Intelligence Platform it's touted as. One thing I've especially been dragging my feet on is implementing automation
   for markdown list format linting that plagues me everyday. I have the [lint rule](https://github.com/dgroomes/markdownlint-playground/blob/main/lint-rules/README.md#lint-rules-1)
