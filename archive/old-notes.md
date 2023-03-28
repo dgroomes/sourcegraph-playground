@@ -1,7 +1,7 @@
 # Old Notes
 
 Everything below the dividing line is a literal copy/paste of my old notes when I tried to run Sourcegraph locally in 2022.
-This content is captured for posterity.
+This content is captured for posterity. So, this information is **OUT OF DATE**.
 
 ---
 

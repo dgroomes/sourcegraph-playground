@@ -74,7 +74,7 @@ Sourcegraph only sold "a single-tenant, managed version of Sourcegraph" for team
 option was to run Sourcegraph myself. I came back to this `sourcegraph-playground` repository to re-visit my notes
 and get up and running with Sourcegraph locally but I couldn't get it to work. Sourcegraph had grown more sophisticated
 since I was first able to build and run it. With sophistication comes complexity. I couldn't tackle the complexity. See 
-my extensive notes in the file [OLD-NOTES.md](OLD-NOTES.md).
+my extensive notes in [archive/old-notes.md](archive/old-notes.md).
 
 
 ### Trial Part 3: "Sourcegraph App"
@@ -86,48 +86,13 @@ I installed it and it's promising although I'm having issues with indexing my re
 issues in detail, and make it clear how to re-produce them. Even if I'm the only audience, that's fine. The Sourcegraph
 team is very generous in [the Sourcegraph Discord](https://discord.com/invite/DZtdAxTfrM).
 
-
-## Instructions: Running Sourcegraph App (Desktop app)
-
-These are my instructions for running *Sourcegraph App* (the desktop app) on my personal computer. I'm running macOS
-Ventura (13.2.1) on an Apple Silicon Macbook.
-
-1. Install Sourcegraph App
-   * I installed via the `.dmg` installer
-2. Install the `src` CLI tool
-   * I installed using HomeBrew. See other installation options at <https://github.com/sourcegraph/src-cli>.
-   * Do I need to set the env vars, like `SRC_ENDPOINT`? Or shouldn't `Source Graph.app` know how to accomplish the same
-     effect?  
-3. Start it
-   * It's neat that the Sourcegraph App is packaged as a proper desktop app. In the macOS Finder, you literally see the
-     file `Sourcegraph App` and it has file kind equal to `Application`. It shows up in Finder in the `Applications`
-     section which means it's installed in the directory `/Applications/`. It's ~800MB.
-   * Open Spotlight (⌘ + Space), type `Sourcegraph App` and hit enter. It opens a little window showing `Stop`, `Start`,
-     and `Show log` buttons. You access the web UI from your browser at `http://127.0.0.1:3080/`. It makes sense that it
-     doesn't have to be an Electron app. I guess why bother, right?
-
-My next step is to figure out indexing. Right now, indexing (is it precise code indexing??) isn't totally working. When
-I navigate to the `http://127.0.0.1:3080/site-admin/repositories` page I see all the repos I expect to see and they all
-have the `CLONED` status. When I click into the settings for any of them, and go to the `Indexing` page, I see "initial
-indexing in progress". I think this is because I'm not running the optional `zoekt-indexserver` service which needs to
-run in a Docker container and also the `src` CLI tool needs to exist. See the [(Optional) batch changes & precise code intel](https://docs.sourcegraph.com/app#optional-batch-changes-precise-code-intel)
-section of the docs.
+My working notes for Sourcegraph App are in [sourcegraph-app.md](sourcegraph-app.md).
 
 
 ## Wish List
 
 General clean-ups, TODOs and things I wish to implement for this project
 
-* [x] DONE Install the current version of `src`, the Sourcegraph CLI tool. I already have an old installation. Get it up-to-date
-      and make sure it works. This is one of the optional things needed for indexing.
-* [ ] IN PROGRESS Likewise, run Docker at the same time as the Sourcegraph App. See if indexing works.
-  * I'm running into an issue. For some reason I'm getting 
-  * > exec: \"docker\": executable file not found in $PATH"}}
-  * Even though `docker` is at `/usr/local/bin/docker` and this dir is in `/etc/paths` so I would think the Sourcegraph
-    process should have that on its path? It is a symlink though so maybe that's it. I'm going to reproduce this from a
-    singe-file Go program.
-  * UPDATE: This is the problem: https://apple.stackexchange.com/a/243946 . The PATH for apps launched from Finder/Spotlight
-    don't have `/usr/local/bin` on the PATH.
 * [ ] List out more todos. I want to try the intellij plugin, browser extension, etc. I want to use Sourcegraph as the
   Code Intelligence Platform it's touted as. One thing I've especially been dragging my feet on is implementing automation
   for markdown list format linting that plagues me everyday. I have the [lint rule](https://github.com/dgroomes/markdownlint-playground/blob/main/lint-rules/README.md#lint-rules-1)
@@ -135,9 +100,6 @@ General clean-ups, TODOs and things I wish to implement for this project
   of really do not vibe with widespread automated pull requests (despite everyone else and their parents loving it). I
   still have to validate the change repo-by-repo, because I actually review/QA my software changes (and writing work changes)
   So I don't grok it, but I'm willing to see the other side of it.   
-* [ ] Sync my personal repos. Should I sync from local or from GitHub integration?
-* [ ] Consider building Sourcegraph "app" from source. Is it all in the OSS repo? I don't necessarily want to maintain
-  a fork but I might want to patch some things (and maybe disable some things).
 
 
 ## Reference
