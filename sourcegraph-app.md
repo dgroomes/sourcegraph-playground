@@ -37,8 +37,14 @@ These are the instructions I follow to get Sourcegraph App running on my compute
       to customize the PATH via the `LSEnvironment` property doesn't work because only the application developer who signed
       the app can change the `Info.plist` (my weak understanding). I wound up doing the `launchctl config user path` trick
       described in the earlier linked StackExchange answer.
-5. Start it
-    * It's neat that the Sourcegraph App is packaged as a proper desktop app. In the macOS Finder, you literally see the
+5. Set the log level
+    * ```shell
+      launchctl setenv SRC_LOG_LEVEL info
+      ```
+    * Oddly, when I use `dbug`, I indeed see some debug-level logs but then the app hangs and never gets past the "Start Sourcegraph..."
+      message. I need to debug the program and logs are a fundamental tool to do that.
+6. Start it
+    * Note: It's neat that the Sourcegraph App is packaged as a proper desktop app. In the macOS Finder, you literally see the
       file `Sourcegraph App` and it has file kind equal to `Application`. It shows up in Finder in the `Applications`
       section which means it's installed in the directory `/Applications/`. It's ~800MB.
     * Open Spotlight (⌘ + Space), type `Sourcegraph App` and hit enter. It opens a little window showing `Stop`, `Start`,
@@ -67,7 +73,17 @@ Getting Sourcegraph App up and running and with all the bells and whistles is a 
       singe-file Go program.
     * UPDATE: This is the problem: https://apple.stackexchange.com/a/243946 . The PATH for apps launched from Finder/Spotlight
       don't have `/usr/local/bin` on the PATH.
-* [ ] What's going on with the 'initial indexing in progress' message?
+* [ ] IN PROGRESS What's going on with the 'initial indexing in progress' message?
+    * As I start looking into the 'initial indexing in progress' issue, I need to know where to even look. I've already
+      exhausted the `sourcegraph.console` logs (pretty minimal). Are there other logs? We love good 'ole logs. Ok let's
+      spelunk around the files in the Sourcegraph App (SA) installation. There are support files at `/Users/davidgroomes/Library/Application Support/sourcegraph-sp`.
+      Ok there's a whole Postgres installation, there are some config files (`global-settings.json` and `site-config.json`)
+      very nice, and a zoekt dir (the text search engine). The zoekt dir has empty `index/` and `log/` dirs. I'm not sure
+      where else there could be logs (I briefly checked `/var/log` and `~/Library/Logs`). Can I change the log level in
+      `site-config.json`? Let's check the [*Administration* docs](https://docs.sourcegraph.com/admin). Ok I should be
+      able to set `SRC_LOG_LEVEL` env var but again I don't have easy/direct control over the environment because this
+      app is not launched on the shell. (Also I double checked the [Sourcegraph App docs](https://docs.sourcegraph.com/app)
+      and there's not much admin stuff; but that's ok). Can I set an env var using the `launchctl` trick? Yes.  
 * [ ] Sync my personal repos. Should I sync from local or from GitHub integration?
 * [ ] Consider building Sourcegraph "app" from source. Is it all in the OSS repo? I don't necessarily want to maintain
   a fork but I might want to patch some things (and maybe disable some things).
